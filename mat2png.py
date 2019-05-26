@@ -135,12 +135,12 @@ def mat_hdr(data):
     as we are not defining material transparency here.
     """
     #  Shift Right
-    red_bits = red_bits >> 3
-    green_bits = green_bits >> 2
-    blue_bits = blue_bits >> 3
+    red = red >> 3
+    green = green >> 2
+    blue = blue >> 3
     #  End offset 0x4b
     return (file_type, mat_type, record_count, texture_count, bitdepth, \
-            red_bits, green_bits, blue_bits)
+            red, green, blue)
 
 
 def mat_record_hdr(data):
