@@ -14,7 +14,6 @@ from re import sub
 import json
 import logging
 import glob
-import hashlib
 import numpy as np
 import cv2
 import sys
