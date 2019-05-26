@@ -171,7 +171,7 @@ def mat_record_hdr(data):
 
 def texture_hdr(data, offset):
     """
-    This functions returns the material dimensions,
+    This function returns the material dimensions,
     transparency, mipmap count and also where the bitmap data
     starting offset
     
