@@ -78,10 +78,8 @@ def colormap(name):
     transparency_table = transp_array
     lighting_table = transparency_table #  not sure what to do with lighting
     #  table. Copying from transparency table in order not to mess
-    #  with function's returning values structure for now.
+    #  with function returning values structure for now.
     if version == u'\x1e':
-        #return (palette_array, lighting_table)
-        #if transparent_bool is True:
         return (palette, lighting_table, transparency_table)
     else:
         print "ERROR: unable to identify colormap version / type."
