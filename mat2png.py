@@ -121,27 +121,19 @@ def mat_hdr(data):
     G = 0, 6 (16-bit 565), 5 (16-bit 1555 ARGB), 8
     R = 0, 5, 8
     """
-    blue_bits = unpack("<I", data[28:32])[0]
-    green_bits = unpack("<I", data[32:36])[0]
-    red_bits = unpack("<I", data[36:40])[0]
-    if bitdepth is 16:
-        red_bits = (red_bits & 0b11111000) << 8
-        green_bits = (green_bits & 0b11111100) << 3
-        blue_bits = blue_bits >> 3
+    blue = unpack("<I", data[28:32])[0]
+    green = unpack("<I", data[32:36])[0]
+    red = unpack("<I", data[36:40])[0]
+    if bitdepth is 16: #  convert to RGB565
+        red = (red & 0xf8) << 8
+        green = (green & 0xfc) << 3
+        blue = blue >> 3
+        red = red << 11
+        green = green << 5
     """
     We will comment the ARGB1555 mode for now
     as we are not defining material transparency here.
     """
-    #  Shift Left
-    #if blue_bits.bit_legnth() is 5 and green_bits is 5 and red_bits is 5:
-    #    red_bits = red_bits << 10
-    if blue_bits.bit_length() is 5 and green_bits.bit_length() is 6 \
-            and red_bits.bit_length() is 5:
-        red_bits = red_bits << 11
-        green_bits = green_bits << 10
-    else:
-        red_bits = red_bits
-        green_bits = green_bits
     #  Shift Right
     red_bits = red_bits >> 3
     green_bits = green_bits >> 2
