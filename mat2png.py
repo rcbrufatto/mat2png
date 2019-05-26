@@ -391,7 +391,7 @@ def main():
                     if mat_type == "color":
                         bitdepth = mat_hdr(material)[4]
                         record_type, color_num = mat_color_record_hdr(material)
-                        logging.info("Nothing to do with file: %s ..." % sys.argv[1])
+                        logging.info("Nothing to do with file: %s ..." % f)
                         logging.info("File type and version: %s" % file_type)
                         logging.info("color number: %s" % color_num)
                         logging.info("bitdepth: %s" % bitdepth)
