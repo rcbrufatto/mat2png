@@ -124,16 +124,16 @@ def mat_hdr(data):
     blue = unpack("<I", data[28:32])[0]
     green = unpack("<I", data[32:36])[0]
     red = unpack("<I", data[36:40])[0]
+    """
+    Not considering ARGB1555 mode for now
+    as we are not defining material transparency here.
+    """
     if bitdepth is 16: #  convert to RGB565
         red = (red & 0xf8) << 8
         green = (green & 0xfc) << 3
         blue = blue >> 3
         red = red << 11
         green = green << 5
-    """
-    We will comment the ARGB1555 mode for now
-    as we are not defining material transparency here.
-    """
     #  Shift Right
     red = red >> 3
     green = green >> 2
